@@ -25,4 +25,17 @@
     <string name="delete">Delete</string>
     <string name="pending">pending</string>
     <string name="viewrouteinfofragment">ViewRouteInfoFragment</string>
+    <string name="flow">Flow</string>
+    <string name="about_us">ABOUT US</string>
+    <string name="contact">CONTACT</string>
+    <string name="developer">Developer:</string>
+    <string name="nga_le">Nga Le - 101110291</string>
+    <string name="version">Version 1.0</string>
+    <string name="todo">TODO</string>
+    <string name="time_list">Time :      8am - 10/10/2019</string>
+    <string name="rate_list">Rate :</string>
+    <string name="tags_list">Tags :      Easy, Time - consuming</string>
+    <string name="edit">Edit</string>
+    <string name="pause">Pause</string>
+    <string name="finish">Finish</string>
 </resources>

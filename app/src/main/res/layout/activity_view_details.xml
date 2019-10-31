@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view_details">
+    tools:context=".ViewDetails">
 
     <fragment
         android:id="@+id/map"
@@ -43,6 +43,7 @@
         android:id="@+id/btnHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
         android:contentDescription="@string/home"
         android:src="@android:drawable/ic_menu_info_details"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,10 +57,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="96dp"
         android:layout_marginLeft="96dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="16dp"
         android:text="@string/your_route_details"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,12 +69,12 @@
         android:id="@+id/constraintLayout"
         android:layout_width="363dp"
         android:layout_height="491dp"
+        android:background="#B3F19E82"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.405"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.497">
+        app:layout_constraintVertical_bias="0.345">
 
 
         <TextView
@@ -83,6 +85,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="36dp"
             android:text="@string/start"
+            android:textColorHint="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -99,12 +102,15 @@
 
         <TextView
             android:id="@+id/lblRate"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginLeft="28dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginLeft="29dp"
             android:layout_marginTop="48dp"
+            android:layout_marginEnd="78dp"
+            android:layout_marginRight="78dp"
             android:text="@string/rate"
+            app:layout_constraintEnd_toStartOf="@+id/imgstar2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lblTags" />
 
@@ -148,12 +154,12 @@
             android:layout_marginTop="28dp"
             android:ems="10"
             android:hint="@string/eaton_center"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.537"
             app:layout_constraintStart_toEndOf="@+id/lblStart"
-            app:layout_constraintTop_toTopOf="parent"
-            android:importantForAutofill="no" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/txtEnd"
@@ -162,12 +168,12 @@
             android:layout_marginTop="32dp"
             android:ems="10"
             android:hint="@string/george_brown_college"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.549"
             app:layout_constraintStart_toEndOf="@+id/lblEnd"
-            app:layout_constraintTop_toBottomOf="@+id/txtStart"
-            android:importantForAutofill="no" />
+            app:layout_constraintTop_toBottomOf="@+id/txtStart" />
 
         <EditText
             android:id="@+id/txtTitle"
@@ -176,12 +182,12 @@
             android:layout_marginTop="32dp"
             android:ems="10"
             android:hint="@string/ttc_to_school"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.549"
             app:layout_constraintStart_toEndOf="@+id/lblTitle"
-            app:layout_constraintTop_toBottomOf="@+id/txtEnd"
-            android:importantForAutofill="no" />
+            app:layout_constraintTop_toBottomOf="@+id/txtEnd" />
 
         <EditText
             android:id="@+id/txtTime"
@@ -190,12 +196,12 @@
             android:layout_marginTop="32dp"
             android:ems="10"
             android:hint="@string/_8pm_10_10_2019"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.549"
             app:layout_constraintStart_toEndOf="@+id/lblTime"
-            app:layout_constraintTop_toBottomOf="@+id/txtTitle"
-            android:importantForAutofill="no" />
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
 
         <EditText
             android:id="@+id/txtTags"
@@ -204,26 +210,38 @@
             android:layout_marginTop="32dp"
             android:ems="10"
             android:hint="@string/easy_time_consuming"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.549"
-            app:layout_constraintStart_toEndOf="@+id/lblTags"
-            app:layout_constraintTop_toBottomOf="@+id/txtTime"
-            android:importantForAutofill="no" />
-
-        <EditText
-            android:id="@+id/txtRate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:ems="10"
-            android:hint="@string/pending"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.549"
+            app:layout_constraintStart_toEndOf="@+id/lblTags"
+            app:layout_constraintTop_toBottomOf="@+id/txtTime" />
+
+        <ImageButton
+            android:id="@+id/imgStar3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="46dp"
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/todo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.182"
             app:layout_constraintStart_toEndOf="@+id/lblRate"
-            app:layout_constraintTop_toBottomOf="@+id/txtTags" />
+            app:srcCompat="@android:drawable/btn_star_big_on" />
+
+        <ImageButton
+            android:id="@+id/imgStar4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="174dp"
+            android:layout_marginRight="174dp"
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/todo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/lblRate"
+            app:layout_constraintTop_toTopOf="@+id/imgStar1"
+            app:srcCompat="@android:drawable/btn_star_big_on" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

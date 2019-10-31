@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import comp3074.flow.ui.viewrouteinfo.ViewRouteInfoFragment;
 
-public class view_route_info extends AppCompatActivity {
+public class ViewRouteInfo extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
