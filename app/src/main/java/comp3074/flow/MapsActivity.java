@@ -40,7 +40,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Toronto and move the camera
-        LatLng toronto = new LatLng(43, -79);
+        LatLng toronto = new LatLng(44, -80);
         mMap.addMarker(new MarkerOptions().position(toronto).title("Marker in Toronto"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(toronto));
     }

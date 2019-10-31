@@ -1,4 +1,28 @@
 <resources>
     <string name="app_name">Flow</string>
     <string name="title_activity_maps">Map</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bt_new">New</string>
+    <string name="btn_icon">button_home</string>
+    <string name="btn_view">View</string>
+    <string name="home">home</string>
+    <string name="search">Find Route</string>
+    <string name="your_route_details">Your Route Details</string>
+    <string name="save">Save</string>
+    <string name="start">Start</string>
+    <string name="end">End</string>
+    <string name="title">Title</string>
+    <string name="time">Time</string>
+    <string name="tags">Tags</string>
+    <string name="rate">Rate</string>
+    <string name="eaton_center">Eaton Center</string>
+    <string name="george_brown_college">George Brown College</string>
+    <string name="ttc_to_school">TTC to School</string>
+    <string name="_8pm_10_10_2019">8pm - 10/10/2019</string>
+    <string name="easy_time_consuming">Easy - Time Consuming</string>
+    <string name="delete">Delete</string>
+    <string name="pending">pending</string>
+    <string name="viewrouteinfofragment">ViewRouteInfoFragment</string>
 </resources>
