@@ -8,23 +8,23 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
-    android:background="#33FF5722"
+    android:background="#CCFF5722"
     app:layoutManager="LinearLayoutManager"
     tools:context=".RoutesFragment"
     tools:listitem="@layout/fragment_routes">
 
-<!--    <ListView-->
-<!--        android:id="@+id/list_route"-->
-<!--        android:layout_width="274dp"-->
-<!--        android:layout_height="406dp"-->
-<!--        android:layout_marginStart="84dp"-->
-<!--        android:layout_marginLeft="84dp"-->
-<!--        android:layout_marginTop="219dp"-->
-<!--        android:layout_marginBottom="200dp"-->
-<!--        android:background="#33FF5722"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/map"-->
-<!--        app:layout_constraintVertical_bias="1.0" />-->
+    <!--    <ListView-->
+    <!--        android:id="@+id/list_route"-->
+    <!--        android:layout_width="274dp"-->
+    <!--        android:layout_height="406dp"-->
+    <!--        android:layout_marginStart="84dp"-->
+    <!--        android:layout_marginLeft="84dp"-->
+    <!--        android:layout_marginTop="219dp"-->
+    <!--        android:layout_marginBottom="200dp"-->
+    <!--        android:background="#33FF5722"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/map"-->
+    <!--        app:layout_constraintVertical_bias="1.0" />-->
 
 </androidx.recyclerview.widget.RecyclerView>

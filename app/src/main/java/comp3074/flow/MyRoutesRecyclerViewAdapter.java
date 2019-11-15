@@ -8,22 +8,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import comp3074.flow.RoutesFragment.OnListFragmentInteractionListener;
-import comp3074.flow.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
 public class MyRoutesRecyclerViewAdapter extends RecyclerView.Adapter<MyRoutesRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private List<Route> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyRoutesRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
-        mValues = items;
+    public MyRoutesRecyclerViewAdapter(OnListFragmentInteractionListener listener) {
         mListener = listener;
     }
 
@@ -37,8 +30,8 @@ public class MyRoutesRecyclerViewAdapter extends RecyclerView.Adapter<MyRoutesRe
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(mValues.get(position).toString());
+        holder.mContentView.setText(mValues.get(position).getTitle());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,14 +47,15 @@ public class MyRoutesRecyclerViewAdapter extends RecyclerView.Adapter<MyRoutesRe
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+//        return mValues.size();
+        return mValues!=null?mValues.size():0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public Route mItem;
 
         public ViewHolder(View view) {
             super(view);
@@ -74,5 +68,9 @@ public class MyRoutesRecyclerViewAdapter extends RecyclerView.Adapter<MyRoutesRe
         public String toString() {
             return super.toString() + " '" + mContentView.getText() + "'";
         }
+    }
+    void setRoute(List<Route> routes){
+        mValues = routes;
+        notifyDataSetChanged();
     }
 }

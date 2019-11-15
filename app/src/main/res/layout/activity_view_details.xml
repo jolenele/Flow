@@ -107,10 +107,7 @@
             android:layout_marginStart="29dp"
             android:layout_marginLeft="29dp"
             android:layout_marginTop="48dp"
-            android:layout_marginEnd="78dp"
-            android:layout_marginRight="78dp"
             android:text="@string/rate"
-            app:layout_constraintEnd_toStartOf="@+id/imgstar2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lblTags" />
 
@@ -217,31 +214,16 @@
             app:layout_constraintStart_toEndOf="@+id/lblTags"
             app:layout_constraintTop_toBottomOf="@+id/txtTime" />
 
-        <ImageButton
-            android:id="@+id/imgStar3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="46dp"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/todo"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <RatingBar
+            android:id="@+id/ratingBarUpdate"
+            android:layout_width="146dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="36dp"
+            android:numStars="5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.182"
+            app:layout_constraintHorizontal_bias="0.528"
             app:layout_constraintStart_toEndOf="@+id/lblRate"
-            app:srcCompat="@android:drawable/btn_star_big_on" />
-
-        <ImageButton
-            android:id="@+id/imgStar4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="174dp"
-            android:layout_marginRight="174dp"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/todo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/lblRate"
-            app:layout_constraintTop_toTopOf="@+id/imgStar1"
-            app:srcCompat="@android:drawable/btn_star_big_on" />
+            app:layout_constraintTop_toBottomOf="@+id/txtTags" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

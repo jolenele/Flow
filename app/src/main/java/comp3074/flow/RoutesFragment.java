@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,9 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import comp3074.flow.dummy.DummyContent;
-import comp3074.flow.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 
@@ -56,7 +55,7 @@ public class RoutesFragment extends Fragment {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
     }
-
+    private RouteViewModel routeViewModel;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,14 +63,19 @@ public class RoutesFragment extends Fragment {
 
         // Set the adapter
         if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new MyRoutesRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            RecyclerView recyclerView = view.findViewById(R.id.list);
+            final MyRoutesRecyclerViewAdapter adapter = new MyRoutesRecyclerViewAdapter(mListener);
+            routeViewModel = new ViewModelProvider(this).get(RouteViewModel.class);
+            routeViewModel.getAllRoutes().observe(this, routes -> adapter.setRoute(routes));
+//            Context context = view.getContext();
+//            RecyclerView recyclerView = (RecyclerView) view;
+//            if (mColumnCount <= 1) {
+//                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+//            } else {
+//                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+//            }
+//            recyclerView.setAdapter(new MyRoutesRecyclerViewAdapter(Route.ITEMS, mListener));
+            recyclerView.setAdapter(adapter);
         }
         return view;
     }
@@ -106,6 +110,6 @@ public class RoutesFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Route route);
     }
 }

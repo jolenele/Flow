@@ -28,7 +28,7 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
@@ -59,9 +59,9 @@
         android:id="@+id/btnNew"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="600dp"
-        android:layout_marginEnd="160dp"
-        android:layout_marginRight="160dp"
+        android:layout_marginTop="516dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
         android:text="@string/bt_new"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/map" />
@@ -105,23 +105,23 @@
         android:contentDescription="@string/todo" />
 
     <fragment
-        android:id="@+id/fragment"
+        android:id="@+id/fmListRoute"
         android:name="comp3074.flow.RoutesFragment"
-        android:layout_width="343dp"
-        android:layout_height="452dp"
+        android:layout_width="325dp"
+        android:layout_height="274dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_bar" />
 
     <fragment
-        android:id="@+id/fragment2"
+        android:id="@+id/fmInfo"
         android:name="comp3074.flow.ViewInfo"
-        android:layout_width="412dp"
-        android:layout_height="164dp"
+        android:layout_width="408dp"
+        android:layout_height="261dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment"
+        app:layout_constraintTop_toBottomOf="@+id/fmListRoute"
         app:layout_constraintVertical_bias="1.0" />
 
     <!--    <ImageButton-->
