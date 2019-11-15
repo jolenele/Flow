@@ -19,11 +19,19 @@ public class RouteRepository {
     }
 
     LiveData<List<Route>> getAllRoute(){ return allRoute; }
-    LiveData<Route> getRoute(String title){ return routeDao.getRoute(title); }
+
+    LiveData<Route> getRoute(String title){ return routeDao.getRoute(title);}
+
     void insert(Route route){
         new InsertAsyc(routeDao).execute(route);
     }
+
     void deleteRoute(String route) { new DeleteAsyc(routeDao).execute(route);}
+
+    void update(Route route){ new UpdateAsyc(routeDao).execute(route);}
+
+//    void update(String title, String start, String end, int rate, String time, String tags) { new UpdateAsyc(routeDao).execute(route);}
+
     private static class InsertAsyc extends AsyncTask<Route, Void, Void> {
 
         private RouteDao dao;
@@ -49,6 +57,15 @@ public class RouteRepository {
         @Override
         protected Void doInBackground(String... routes) {
             dao.deleteItem(routes[0]);
+            return null;
+        }
+    }
+    private static class UpdateAsyc extends AsyncTask<Route, Void, Void>{
+        private RouteDao dao;
+        UpdateAsyc(RouteDao dao) { this.dao = dao;}
+        @Override
+        protected Void doInBackground(Route... route) {
+            dao.update(route[0]);
             return null;
         }
     }

@@ -6,8 +6,6 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -56,6 +54,7 @@ public class RoutesFragment extends Fragment {
         }
     }
     private RouteViewModel routeViewModel;
+    public static final int NEW_ITEM_ACT = 1;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,15 +65,12 @@ public class RoutesFragment extends Fragment {
             RecyclerView recyclerView = view.findViewById(R.id.list);
             final MyRoutesRecyclerViewAdapter adapter = new MyRoutesRecyclerViewAdapter(mListener);
             routeViewModel = new ViewModelProvider(this).get(RouteViewModel.class);
-            routeViewModel.getAllRoutes().observe(this, routes -> adapter.setRoute(routes));
-//            Context context = view.getContext();
-//            RecyclerView recyclerView = (RecyclerView) view;
-//            if (mColumnCount <= 1) {
-//                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-//            } else {
-//                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-//            }
-//            recyclerView.setAdapter(new MyRoutesRecyclerViewAdapter(Route.ITEMS, mListener));
+            routeViewModel.getAllRoutes().observe(this, new Observer<List<Route>>() {
+                @Override
+                public void onChanged(List<Route> routes) {
+                    adapter.setRoute(routes);
+                }
+            });
             recyclerView.setAdapter(adapter);
         }
         return view;

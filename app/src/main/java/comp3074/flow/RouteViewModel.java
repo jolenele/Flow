@@ -30,5 +30,6 @@ public class RouteViewModel extends AndroidViewModel {
         repository.insert(route);
     }
     public void deleteRoute(String title) { repository.deleteRoute(title); }
+    public void update(Route route) { repository.update(route);}
 
 }
