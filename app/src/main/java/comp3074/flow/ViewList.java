@@ -50,7 +50,7 @@ public class ViewList extends FragmentActivity implements
     public void onListFragmentInteraction(Route route) {
         Toast.makeText(this,"Selected: " + route.getTitle(), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(ViewList.this, ViewDetails.class);
-        intent.putExtra("Route", route.getTitle());
+        intent.putExtra("Route", route.id);
         startActivity(intent);
 
     }

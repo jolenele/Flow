@@ -36,7 +36,7 @@ public class Tracking extends AppCompatActivity {
                     Route newRoute = new Route((int) rate.getRating(), title.getText().toString(), tags.getText().toString());
                     RouteViewModel routeViewModel = new ViewModelProvider(Tracking.this).get(RouteViewModel.class);
                     routeViewModel.insert(newRoute);
-                    intent.putExtra(EXTRA_ITEM, newRoute.getTitle());
+                    intent.putExtra(EXTRA_ITEM, newRoute.id);
                     ((Activity)v.getContext()).setResult(Activity.RESULT_OK,intent);
                 }
                 finish();

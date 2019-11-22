@@ -1,6 +1,7 @@
 package comp3074.flow;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -43,20 +44,27 @@ public class ViewDetails extends AppCompatActivity {
         final RatingBar rate = findViewById(R.id.ratingBarUpdate);
 
         final RouteViewModel routeViewModel = new ViewModelProvider(this).get(RouteViewModel.class);
-        final String routeName = getIntent().getStringExtra("Route");
-//        final Route route = routeViewModel.getRoute(routeName);
+        final int routeId = getIntent().getIntExtra("Route", 0);
 
-        routeViewModel.getRoute(routeName).observe(this, new Observer<Route>() {
+        routeViewModel.getRoute(routeId).observe(this, new Observer<Route>() {
             @Override
             public void onChanged(Route route) {
-                start.setText(route.getStart());
-                end.setText(route.getEnd());
+//                start.setText(route.getStart());
+//                end.setText(route.getEnd());
                 tags.setText(route.getTags());
                 time.setText(route.getTime());
                 rate.setRating(route.getRate());
-                title.setText(routeName);
+                title.setText(route.getTitle());
             }
         });
+
+//        routeViewModel.getLocation(routeId).observe(this, new Observer<Location>() {
+//            @Override
+//            public void onChanged(Location location) {
+//                start.setText(String.valueOf(location.longitude));
+//                end.setText(String.valueOf(location.latitude));
+//            }
+//        });
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,8 +90,8 @@ public class ViewDetails extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                routeViewModel.deleteRoute(routeName);
-                Toast.makeText(v.getContext(), "Deleted " + routeName, Toast.LENGTH_LONG).show();
+                routeViewModel.deleteRoute(routeId);
+                Toast.makeText(v.getContext(), "Deleted " + routeId, Toast.LENGTH_LONG).show();
                 startActivity(intent);
                 finish();
             }
