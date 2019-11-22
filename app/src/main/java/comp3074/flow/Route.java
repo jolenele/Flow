@@ -3,35 +3,33 @@ package comp3074.flow;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
- @Entity(tableName = "routes")
-// @Entity(tableName = "routes", indices = {@Index(value = {"", "last_name"},
-//         unique = true)})
-    public class Route {
-//     @PrimaryKey(autoGenerate = true)
-//     @NonNull
-//     @ColumnInfo(name = "id")
-//     private int id;
-     @PrimaryKey
-     @NonNull
-     @ColumnInfo(name= "Title")
-     private String title;
-     @ColumnInfo(name = "Start")
-     private String start;
-     @ColumnInfo(name = "End")
-     private String end;
-     @ColumnInfo(name = "Rate")
-     private int rate;
-     @ColumnInfo(name = "Time")
-     private String time;
-     @ColumnInfo(name = "Tags")
-     private String tags;
 
-    public Route(String start, String end, int rate, @NonNull String title, String time, String tags) {
-//        this.id = id;
+ @Entity(tableName = "routes", indices = {@Index(value = {"id"})})
+    public class Route {
+     @PrimaryKey(autoGenerate = true)
+     @NonNull
+     @ColumnInfo(name = "id")
+     public int id;
+     @ColumnInfo(name= "Title")
+     public String title;
+     @ColumnInfo(name = "Start")
+     public String start;
+     @ColumnInfo(name = "End")
+     public String end;
+     @ColumnInfo(name = "Rate")
+     public int rate;
+     @ColumnInfo(name = "Time")
+     public String time;
+     @ColumnInfo(name = "Tags")
+     public String tags;
+
+    public Route(String start, String end, int rate, String title, String time, String tags) {
+        this.id = id;
         this.start = start;
         this.end = end;
         this.rate = rate;
@@ -40,18 +38,18 @@ import androidx.room.PrimaryKey;
         this.tags = tags;
     }
     @Ignore
-    public Route(int rate, @NonNull  String title, String tags){
+    public Route(int rate, String title, String tags){
         this.rate = rate;
         this.title = title;
         this.tags = tags;
     }
 
-//     public int getId() {
-//        return this.id;
-//    }
-//    public void setId(int id) {
-//        this.id = id;
-//    }
+     public int getId() {
+        return this.id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getStart() {
         return start;

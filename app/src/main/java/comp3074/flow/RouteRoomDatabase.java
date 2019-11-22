@@ -9,11 +9,12 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Route.class}, version = 1, exportSchema = false)
+@Database(entities = {Route.class, Location.class}, version = 2, exportSchema = false)
 
 public abstract class RouteRoomDatabase extends RoomDatabase {
 
     public abstract RouteDao routeDao();
+    public abstract LocationDao locationDao();
     private static volatile RouteRoomDatabase INSTANCE = null;
 
     private static RoomDatabase.Callback callback = new RoomDatabase.Callback() {
@@ -26,15 +27,19 @@ public abstract class RouteRoomDatabase extends RoomDatabase {
     };
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
-        public RouteDao dao;
+        public RouteDao routeDao;
+        public LocationDao locationDao;
 
         PopulateDbAsync(RouteRoomDatabase db) {
-            this.dao = db.routeDao();
+
+            this.routeDao = db.routeDao();
+            this.locationDao = db.locationDao();
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
-            dao.getAll();
+            routeDao.getAll();
+//            locationDao.getAll();
             return null;
         }
     }
@@ -46,7 +51,7 @@ public abstract class RouteRoomDatabase extends RoomDatabase {
                     INSTANCE = Room.databaseBuilder(
                             context.getApplicationContext(),
                             RouteRoomDatabase.class,
-                            "item_database"
+                            "flow_database"
                     ).addCallback(callback).build();
                 }
             }
