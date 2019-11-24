@@ -6,18 +6,16 @@ import android.os.AsyncTask;
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
-import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
-
-@Database(entities = {Route.class, Location.class}, version = 2, exportSchema = false)
-
-public abstract class RouteRoomDatabase extends RoomDatabase {
-
+@Database(entities = {Route.class, Location.class}, version = 1, exportSchema = false)
+public abstract class RoomDatabase extends androidx.room.RoomDatabase {
     public abstract RouteDao routeDao();
-    public abstract LocationDao locationDao();
-    private static volatile RouteRoomDatabase INSTANCE = null;
 
-    private static RoomDatabase.Callback callback = new RoomDatabase.Callback() {
+    public abstract LocationDao locationDao();
+
+    private static volatile RoomDatabase INSTANCE = null;
+
+    private static androidx.room.RoomDatabase.Callback callback = new androidx.room.RoomDatabase.Callback() {
 
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
@@ -30,7 +28,7 @@ public abstract class RouteRoomDatabase extends RoomDatabase {
         public RouteDao routeDao;
         public LocationDao locationDao;
 
-        PopulateDbAsync(RouteRoomDatabase db) {
+        PopulateDbAsync(RoomDatabase db) {
 
             this.routeDao = db.routeDao();
             this.locationDao = db.locationDao();
@@ -39,18 +37,18 @@ public abstract class RouteRoomDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             routeDao.getAll();
-//            locationDao.getAll();
+            locationDao.getAll();
             return null;
         }
     }
 
-    static RouteRoomDatabase getDatabase(Context context) {
+    static RoomDatabase getDatabase(Context context) {
         if (INSTANCE == null) {
-            synchronized (RouteRoomDatabase.class) {
+            synchronized (RoomDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(
                             context.getApplicationContext(),
-                            RouteRoomDatabase.class,
+                            RoomDatabase.class,
                             "flow_database"
                     ).addCallback(callback).build();
                 }
@@ -58,5 +56,4 @@ public abstract class RouteRoomDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
-
 }

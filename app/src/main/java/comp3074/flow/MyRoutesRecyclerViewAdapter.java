@@ -60,8 +60,8 @@ public class MyRoutesRecyclerViewAdapter extends RecyclerView.Adapter<MyRoutesRe
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.txtItemNumber);
-            mContentView = (TextView) view.findViewById(R.id.txtContent);
+            mIdView = view.findViewById(R.id.txtItemNumber);
+            mContentView = view.findViewById(R.id.txtContent);
         }
 
         @Override
