@@ -15,7 +15,7 @@ public class RouteRepository {
     private LiveData<List<Location>> allLocation;
 
     RouteRepository(Application application){
-        RouteRoomDatabase db = RouteRoomDatabase.getDatabase(application);
+        RoomDatabase db = RoomDatabase.getDatabase(application);
         routeDao = db.routeDao();
         allRoute = routeDao.getAll();
         allLocation = routeDao.getAllLocation();
