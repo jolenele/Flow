@@ -11,8 +11,6 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 public abstract class RoomDatabase extends androidx.room.RoomDatabase {
     public abstract RouteDao routeDao();
 
-    public abstract LocationDao locationDao();
-
     private static volatile RoomDatabase INSTANCE = null;
 
     private static androidx.room.RoomDatabase.Callback callback = new androidx.room.RoomDatabase.Callback() {
@@ -26,18 +24,16 @@ public abstract class RoomDatabase extends androidx.room.RoomDatabase {
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
         public RouteDao routeDao;
-        public LocationDao locationDao;
 
         PopulateDbAsync(RoomDatabase db) {
 
             this.routeDao = db.routeDao();
-            this.locationDao = db.locationDao();
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
             routeDao.getAll();
-            locationDao.getAll();
+            routeDao.getAllLocation();
             return null;
         }
     }
