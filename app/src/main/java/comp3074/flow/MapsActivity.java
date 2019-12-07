@@ -73,7 +73,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Get Views
         btnAboutUs = findViewById(R.id.btnHome);
-        btnTrack = findViewById(R.id.btnNew);
+        btnTrack = findViewById(R.id.btnTrack);
         btnViewRoute = findViewById(R.id.btnView);
         txtLocationTextView = findViewById(R.id.txtLocation);
 
@@ -309,7 +309,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             txtLocationTextView.setText(getString(R.string.address_text,
                     getString(R.string.loading),
                     System.currentTimeMillis()));
-            btnTrack.setText("Finish");
+            btnTrack.setText(R.string.stop_tracking_location);
 //            btnTrack.setText(R.string.stop_tracking_location);
         }
     }
@@ -317,7 +317,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private void stopTrackingLocation() {
         if (mTrackingLocation) {
             mTrackingLocation = false;
-            btnTrack.setText("New");
+            btnTrack.setText(R.string.start_tracking_location);
             txtLocationTextView.setText(R.string.textview_hint);
         }
     }
@@ -362,10 +362,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // Update the UI
             txtLocationTextView.setText(getString(R.string.address_text,
                     result, System.currentTimeMillis()));
-            long yourmilliseconds = System.currentTimeMillis();
+            long sc = System.currentTimeMillis();
             SimpleDateFormat temp = new SimpleDateFormat("MMM dd,yyyy HH:mm");
-            Date time = new Date(yourmilliseconds);
-            Route newRoute = new Route(txtLocationTextView.getText().toString(), temp.format(time));
+            Date time = new Date(sc);
+            Route newRoute = new Route(result, temp.format(time));
+            System.out.println("Test: " + result);
+            System.out.println(newRoute.toString());
             RouteViewModel routeViewModel = new ViewModelProvider(MapsActivity.this).get(RouteViewModel.class);
             routeViewModel.insert(newRoute);
         }

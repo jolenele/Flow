@@ -23,6 +23,7 @@ public class ViewDetails extends AppCompatActivity {
     private Button save, delete;
 //    private TextView start, end, title, tags, time;
     private RatingBar rate;
+    private static boolean check = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,22 +50,16 @@ public class ViewDetails extends AppCompatActivity {
         routeViewModel.getRoute(routeId).observe(this, new Observer<Route>() {
             @Override
             public void onChanged(Route route) {
-//                start.setText(route.getStart());
-//                end.setText(route.getEnd());
+                start.setText(route.getStart());
+                end.setText(route.getEnd());
+                title.setText(route.getTitle());
                 tags.setText(route.getTags());
                 time.setText(route.getTime());
                 rate.setRating(route.getRate());
-                title.setText(route.getTitle());
+                System.out.println("test xem co start k: "+route.getStart());
+                System.out.println(route.toString());
             }
         });
-
-//        routeViewModel.getLocation(routeId).observe(this, new Observer<Location>() {
-//            @Override
-//            public void onChanged(Location location) {
-//                start.setText(String.valueOf(location.longitude));
-//                end.setText(String.valueOf(location.latitude));
-//            }
-//        });
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,17 +70,120 @@ public class ViewDetails extends AppCompatActivity {
             }
         });
 
-
-        save.setOnClickListener(new View.OnClickListener() {
+        // Check if there is any updates
+        start.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                Route abc = new Route(start.getText().toString(), end.getText().toString(),rate.getNumStars(),
-                        title.getText().toString(),time.getText().toString(),tags.getText().toString());
-                routeViewModel.update(abc);
-                startActivity(intent);
-                finish();
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                check = true;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
+        end.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                check = true;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        title.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                check = true;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        tags.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                check = true;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        time.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                check = true;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        rate.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            public void onRatingChanged(RatingBar ratingBar, float rating,
+                                        boolean fromUser) {
+                check = true;
+            }
+        });
+
+        if (check){
+            save.setText(R.string.save);
+            save.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    Route abc = new Route(start.getText().toString(), end.getText().toString(),rate.getNumStars(),
+//                            title.getText().toString(),time.getText().toString(),tags.getText().toString());
+//                    routeViewModel.update(abc);
+                    save.setText(R.string.back);
+                }
+            });
+        }
+        else{
+            save.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    Route abc = new Route(rate.getNumStars(), title.getText().toString(),time.getText().toString(),tags.getText().toString());
+//                    routeViewModel.update(routeId, title.getText().toString(), time.getText().toString(), rate.getNumStars(), tags.getText().toString());
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        }
+
+
+
 
         delete.setOnClickListener(new View.OnClickListener() {
             @Override

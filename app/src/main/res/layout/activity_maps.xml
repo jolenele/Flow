@@ -37,20 +37,20 @@
         android:text="@string/btn_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.257"
+        app:layout_constraintHorizontal_bias="0.136"
         app:layout_constraintStart_toStartOf="@+id/map" />
 
     <Button
-        android:id="@+id/btnNew"
+        android:id="@+id/btnTrack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="129dp"
         android:layout_marginLeft="129dp"
         android:layout_marginBottom="124dp"
-        android:text="@string/bt_new"
+        android:text="@string/start_tracking_location"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.682"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton

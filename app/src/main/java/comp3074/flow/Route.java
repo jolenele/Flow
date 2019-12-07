@@ -105,5 +105,10 @@ import androidx.room.PrimaryKey;
     public void setTags(String tags) {
         this.tags = tags;
     }
+
+    public String toString(){
+        return "ID: "+getId()+"\nStart: "+getStart()+"\nEnd: "+getEnd()+"\nTitle: "+getTitle()+
+                "\nTime: "+getTime()+"\nRate: "+String.valueOf(getRate())+"\nTags: "+getTags();
+    }
  }
 
