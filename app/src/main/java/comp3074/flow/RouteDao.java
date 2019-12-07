@@ -16,10 +16,6 @@ public interface RouteDao {
     @Query("DELETE FROM routes")
     void deleteAll();
 
-//    @Query("DELETE FROM SQLITE_SEQUENCE where name='routes'")
-//    void deleteSequence();
-
-
     @Query("DELETE FROM routes WHERE id = :id")
     void deleteItem(int id);
 
@@ -29,9 +25,6 @@ public interface RouteDao {
     @Query("SELECT * FROM routes WHERE id = :id")
     LiveData<Route> getRoute(int id);
 
-//    @Query("UPDATE routes SET title=:title, start=:start, `End`=:end, rate=:rate, time=:time, tags=:tags WHERE title=:title")
-//    void update(String title, String start, String end, int rate, String time, String tags);
-
     @Update
     void update(Route route);
 
@@ -39,11 +32,14 @@ public interface RouteDao {
     void insertLocation(Location location);
 
     @Query("DELETE FROM locations WHERE id = :id")
-    void delete(int id);
+    void deleteLocation(int id);
 
     @Query("SELECT * FROM locations ORDER BY id ASC")
     LiveData<List<Location>> getAllLocation();
 
     @Query("SELECT * FROM locations WHERE id = :id")
     LiveData<Location> getLocation(int id);
+
+    @Query("DELETE FROM locations")
+    void deleteAllLocations();
 }

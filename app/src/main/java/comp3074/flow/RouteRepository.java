@@ -11,7 +11,6 @@ public class RouteRepository {
 
     private RouteDao routeDao;
     private LiveData<List<Route>> allRoute;
-//    private LocationDao locationDao;
     private LiveData<List<Location>> allLocation;
 
     RouteRepository(Application application){
@@ -105,7 +104,7 @@ public class RouteRepository {
 
         @Override
         protected Void doInBackground(Integer... integers) {
-            dao.delete(integers[0]);
+            dao.deleteLocation(integers[0]);
             return null;
         }
     }

@@ -47,5 +47,4 @@ public class RouteViewModel extends AndroidViewModel {
         repository.insertLocation(location);
     }
     public void deleteLocation(int id) { repository.deleteLocation(id); }
-//    public void update(Route route) { repository.updateRoute(route);}
 }

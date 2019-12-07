@@ -62,20 +62,30 @@
         android:contentDescription="@string/home"
         android:src="@android:drawable/ic_menu_info_details"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.969"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/txtLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:hint="@string/textview_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/map" />
+
 
     <!--    <ImageButton-->
-<!--        android:id="@+id/ibtn_about_us"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:contentDescription="@string/home"-->
-<!--        android:src="@android:drawable/ic_menu_agenda"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/map"-->
-<!--        tools:src="@android:drawable/ic_menu_info_details" />-->
+    <!--        android:id="@+id/ibtn_about_us"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:contentDescription="@string/home"-->
+    <!--        android:src="@android:drawable/ic_menu_agenda"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/map"-->
+    <!--        tools:src="@android:drawable/ic_menu_info_details" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

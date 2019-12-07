@@ -51,4 +51,7 @@ dependencies {
 
 // Testing
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
+
+// Device location
+    implementation "com.google.android.gms:play-services-location:15.0.1"
 }

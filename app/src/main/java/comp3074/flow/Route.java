@@ -44,6 +44,13 @@ import androidx.room.PrimaryKey;
         this.tags = tags;
     }
 
+     @Ignore
+     public Route(String start, String time){
+         this.start = start;
+         this.time = time;
+         this.title = "New route created";
+     }
+
      public int getId() {
         return this.id;
     }
