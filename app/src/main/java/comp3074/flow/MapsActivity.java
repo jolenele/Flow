@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,7 +53,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private ImageButton btnAboutUs;
     private Button btnTrack, btnViewRoute;
-    private TextView txtLocationTextView;
+    private TextView txtLocationTextView, txtTitle, txtTags;
+    private RatingBar rating;
+    private LinearLayout input;
 
     // Location classes
     private boolean mTrackingLocation;
@@ -76,8 +80,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         btnTrack = findViewById(R.id.btnTrack);
         btnViewRoute = findViewById(R.id.btnView);
         txtLocationTextView = findViewById(R.id.txtLocation);
-
-
+        txtTitle = findViewById(R.id.txtTitle);
+        txtTags = findViewById(R.id.txtTags);
+        rating = findViewById(R.id.ratingBar);
+        input = findViewById(R.id.linearLayout);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = SupportMapFragment.newInstance();
@@ -311,6 +317,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     System.currentTimeMillis()));
             btnTrack.setText(R.string.stop_tracking_location);
 //            btnTrack.setText(R.string.stop_tracking_location);
+            input.setVisibility(View.VISIBLE);
         }
     }
 
@@ -319,6 +326,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mTrackingLocation = false;
             btnTrack.setText(R.string.start_tracking_location);
             txtLocationTextView.setText(R.string.textview_hint);
+            input.setVisibility(View.GONE);
         }
     }
 
@@ -365,7 +373,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             long sc = System.currentTimeMillis();
             SimpleDateFormat temp = new SimpleDateFormat("MMM dd,yyyy HH:mm");
             Date time = new Date(sc);
-            Route newRoute = new Route(result, temp.format(time));
+            Route newRoute = new Route(result, rating.getNumStars(), txtTitle.getText().toString(), temp.format(time), txtTags.getText().toString());
             System.out.println("Test: " + result);
             System.out.println(newRoute.toString());
             RouteViewModel routeViewModel = new ViewModelProvider(MapsActivity.this).get(RouteViewModel.class);

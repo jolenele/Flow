@@ -203,8 +203,8 @@
 
         <RatingBar
             android:id="@+id/ratingBarUpdate"
-            android:layout_width="146dp"
-            android:layout_height="46dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:numStars="5"
             app:layout_constraintEnd_toEndOf="parent"
