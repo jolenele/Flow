@@ -94,6 +94,7 @@
                 android:id="@+id/lblTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
                 android:text="@string/title" />
 
             <EditText
@@ -114,6 +115,7 @@
                 android:id="@+id/lblTags"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
                 android:text="@string/tags" />
 
             <EditText
@@ -133,6 +135,7 @@
                 android:id="@+id/lblRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
                 android:text="@string/rate" />
 
             <RatingBar

@@ -14,37 +14,25 @@ public class RouteViewModel extends AndroidViewModel {
 
     private LiveData<List<Route>> allRoutes;
 
-    private LiveData<List<Location>> allLocations;
-
 
     public RouteViewModel(@NonNull Application application) {
         super(application);
         repository = new RouteRepository(application);
         allRoutes = repository.getAllRoute();
-        allLocations = repository.getAllLocation();
     }
     public LiveData<List<Route>> getAllRoutes(){
         return allRoutes;
     }
-    public LiveData<Route> getRoute(int id){
-        return repository.getRoute(id);
+    public LiveData<Route> getRouteLive(int id){
+        return repository.getRouteLive(id);
     }
 
     public void insert(Route route){
         repository.insertRoute(route);
     }
-    public void deleteRoute(int id) { repository.deleteRoute(id); }
-//    public void update(Route route) { repository.updateRoute(route);}
-    public void update(int id, String title, String time, int rate, String tags) { repository.updateRoute(id, title, time, rate, tags);}
-    public LiveData<List<Location>> getAllLocations(){
-        return allLocations;
-    }
-    public LiveData<Location> getLocation(int id){
-        return repository.getLocation(id);
-    }
+    public void delete(int id) { repository.delete(id); }
+    public void deleteAll() { repository.deleteAll(); }
+    public void update(Route route) { repository.update(route);}
 
-    public void insertLocation(Location location){
-        repository.insertLocation(location);
-    }
-    public void deleteLocation(int id) { repository.deleteLocation(id); }
+
 }

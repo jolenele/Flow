@@ -60,4 +60,6 @@
     <string name="loading">Loading…</string>
     <string name="address_text">"Address: %1$s \n Timestamp: %2$tr"</string>
     <string name="back">Back</string>
+    <string name="unable_to_update">Unable to update the route</string>
+    <string name="able_to_update">Update success</string>
 </resources>

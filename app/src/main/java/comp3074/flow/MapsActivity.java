@@ -67,6 +67,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public static final float INITIAL_ZOOM = 12f;
     private static final String TAG = MapsActivity.class.getSimpleName();
     private static final String TRACKING_LOCATION_KEY = "tracking_location";
+    private Route newRoute;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -176,8 +177,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setPoiClick(mMap); // Set a click listener for points of interest.
         setMapStyle(mMap); // Set the custom map style.
         enableMyLocation(mMap); // Enable location tracking.
-        // Enable going into StreetView by clicking on an InfoWindow from a
-        // point of interest.
+        // Enable going into StreetView by clicking on an InfoWindow from a point of interest.
         setInfoWindowClickToPanorama(mMap);
     }
 
@@ -310,13 +310,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             mLocationCallback,
                             null /* Looper */);
 
-            // Set a loading text while you wait for the address to be
-            // returned
+            // Set a loading text while you wait for the address to be returned
             txtLocationTextView.setText(getString(R.string.address_text,
                     getString(R.string.loading),
                     System.currentTimeMillis()));
             btnTrack.setText(R.string.stop_tracking_location);
-//            btnTrack.setText(R.string.stop_tracking_location);
             input.setVisibility(View.VISIBLE);
         }
     }
@@ -327,6 +325,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             btnTrack.setText(R.string.start_tracking_location);
             txtLocationTextView.setText(R.string.textview_hint);
             input.setVisibility(View.GONE);
+            RouteViewModel routeViewModel = new ViewModelProvider(MapsActivity.this).get(RouteViewModel.class);
+            routeViewModel.insert(newRoute);
         }
     }
 
@@ -370,14 +370,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // Update the UI
             txtLocationTextView.setText(getString(R.string.address_text,
                     result, System.currentTimeMillis()));
+//            input.setVisibility(View.VISIBLE);
             long sc = System.currentTimeMillis();
             SimpleDateFormat temp = new SimpleDateFormat("MMM dd,yyyy HH:mm");
             Date time = new Date(sc);
-            Route newRoute = new Route(result, rating.getNumStars(), txtTitle.getText().toString(), temp.format(time), txtTags.getText().toString());
+            newRoute = new Route(result, result, rating.getNumStars(), txtTitle.getText().toString(), temp.format(time), txtTags.getText().toString());
             System.out.println("Test: " + result);
             System.out.println(newRoute.toString());
-            RouteViewModel routeViewModel = new ViewModelProvider(MapsActivity.this).get(RouteViewModel.class);
-            routeViewModel.insert(newRoute);
         }
     }
 

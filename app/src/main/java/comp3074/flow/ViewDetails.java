@@ -23,7 +23,6 @@ public class ViewDetails extends AppCompatActivity {
     private Button save, delete;
 //    private TextView start, end, title, tags, time;
     private RatingBar rate;
-    private static boolean check = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +46,7 @@ public class ViewDetails extends AppCompatActivity {
         final RouteViewModel routeViewModel = new ViewModelProvider(this).get(RouteViewModel.class);
         final int routeId = getIntent().getIntExtra("Route", 0);
 
-        routeViewModel.getRoute(routeId).observe(this, new Observer<Route>() {
+        routeViewModel.getRouteLive(routeId).observe(this, new Observer<Route>() {
             @Override
             public void onChanged(Route route) {
                 start.setText(route.getStart());
@@ -70,125 +69,22 @@ public class ViewDetails extends AppCompatActivity {
             }
         });
 
-        // Check if there is any updates
-        start.addTextChangedListener(new TextWatcher() {
+        save.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                check = true;
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
+            public void onClick(View v) {
+                routeViewModel.update(new Route(routeId, start.getText().toString(),
+                        end.getText().toString(), rate.getNumStars(), title.getText().toString(),
+                        time.getText().toString(),tags.getText().toString()));
+                Toast.makeText(ViewDetails.this, R.string.able_to_update, Toast.LENGTH_LONG).show();
+                startActivity(intent);
+                finish();
             }
         });
-        end.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                check = true;
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-        title.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                check = true;
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-        tags.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                check = true;
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-        time.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                check = true;
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-        rate.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            public void onRatingChanged(RatingBar ratingBar, float rating,
-                                        boolean fromUser) {
-                check = true;
-            }
-        });
-
-        if (check){
-            save.setText(R.string.save);
-            save.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-//                    Route abc = new Route(start.getText().toString(), end.getText().toString(),rate.getNumStars(),
-//                            title.getText().toString(),time.getText().toString(),tags.getText().toString());
-//                    routeViewModel.update(abc);
-                    save.setText(R.string.back);
-                }
-            });
-        }
-        else{
-            save.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-//                    Route abc = new Route(rate.getNumStars(), title.getText().toString(),time.getText().toString(),tags.getText().toString());
-//                    routeViewModel.update(routeId, title.getText().toString(), time.getText().toString(), rate.getNumStars(), tags.getText().toString());
-                    startActivity(intent);
-                    finish();
-                }
-            });
-        }
-
-
-
 
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                routeViewModel.deleteRoute(routeId);
+                routeViewModel.delete(routeId);
                 Toast.makeText(v.getContext(), "Deleted " + routeId, Toast.LENGTH_LONG).show();
                 startActivity(intent);
                 finish();

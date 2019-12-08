@@ -13,7 +13,7 @@ import comp3074.flow.RoutesFragment.OnListFragmentInteractionListener;
 
 import java.util.List;
 
-public class MyRoutesRecyclerViewAdapter extends RecyclerView.Adapter<MyRoutesRecyclerViewAdapter.ViewHolder>{
+public class MyRoutesRecyclerViewAdapter extends RecyclerView.Adapter<MyRoutesRecyclerViewAdapter.ViewHolder> {
 
     private List<Route> mValues;
     private final OnListFragmentInteractionListener mListener;
@@ -50,7 +50,7 @@ public class MyRoutesRecyclerViewAdapter extends RecyclerView.Adapter<MyRoutesRe
     @Override
     public int getItemCount() {
 //        return mValues.size();
-        return mValues!=null?mValues.size():0;
+        return mValues != null ? mValues.size() : 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -71,58 +71,14 @@ public class MyRoutesRecyclerViewAdapter extends RecyclerView.Adapter<MyRoutesRe
             return super.toString() + " '" + mContentView.getText() + "'";
         }
     }
-    void setRoute(List<Route> routes){
+
+    void setRoute(List<Route> routes) {
         mValues = routes;
         notifyDataSetChanged();
     }
 
-//    @Override
-//    public Filter getFilter() {
-//        Filter filter = new Filter() {
-//
-//            @SuppressWarnings("unchecked")
-//            @Override
-//            protected void publishResults(CharSequence constraint,FilterResults results) {
-//
-//                mDisplayedValues = (ArrayList<Product>) results.values; // has the filtered values
-//                notifyDataSetChanged();  // notifies the data with new filtered values
-//            }
-//
-//            @Override
-//            protected FilterResults performFiltering(CharSequence constraint) {
-//                FilterResults results = new FilterResults();        // Holds the results of a filtering operation in values
-//                ArrayList<Product> FilteredArrList = new ArrayList<Product>();
-//
-//                if (mOriginalValues == null) {
-//                    mOriginalValues = new ArrayList<Product>(mDisplayedValues); // saves the original data in mOriginalValues
-//                }
-//
-//                /********
-//                 *
-//                 *  If constraint(CharSequence that is received) is null returns the mOriginalValues(Original) values
-//                 *  else does the Filtering and returns FilteredArrList(Filtered)
-//                 *
-//                 ********/
-//                if (constraint == null || constraint.length() == 0) {
-//
-//                    // set the Original result to return
-//                    results.count = mOriginalValues.size();
-//                    results.values = mOriginalValues;
-//                } else {
-//                    constraint = constraint.toString().toLowerCase();
-//                    for (int i = 0; i < mOriginalValues.size(); i++) {
-//                        String data = mOriginalValues.get(i).name;
-//                        if (data.toLowerCase().startsWith(constraint.toString())) {
-//                            FilteredArrList.add(new Product(mOriginalValues.get(i).name,mOriginalValues.get(i).price));
-//                        }
-//                    }
-//                    // set the Filtered result to return
-//                    results.count = FilteredArrList.size();
-//                    results.values = FilteredArrList;
-//                }
-//                return results;
-//            }
-//        };
-//        return filter;
-//    }
+    public Route getRouteAtPosition(int position) {
+        return mValues.get(position);
+    }
 }
+

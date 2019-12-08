@@ -11,29 +11,26 @@ public class RouteRepository {
 
     private RouteDao routeDao;
     private LiveData<List<Route>> allRoute;
-    private LiveData<List<Location>> allLocation;
 
     RouteRepository(Application application){
         RoomDatabase db = RoomDatabase.getDatabase(application);
         routeDao = db.routeDao();
         allRoute = routeDao.getAll();
-        allLocation = routeDao.getAllLocation();
     }
 
     LiveData<List<Route>> getAllRoute(){ return allRoute; }
 
-    LiveData<Route> getRoute(int id){ return routeDao.getRoute(id);}
+    LiveData<Route> getRouteLive(int id){ return routeDao.getRouteLive(id);}
 
-    void insertRoute(Route route){
-        new InsertAsyc(routeDao).execute(route);
+    void insertRoute(Route route){ new InsertAsyc(routeDao).execute(route); }
+
+    void delete(int id) { new DeleteAsyc(routeDao).execute(id);}
+
+    public void deleteAll()  {
+        new deleteAllWordsAsyncTask(routeDao).execute();
     }
 
-    void deleteRoute(int id) { new DeleteAsyc(routeDao).execute(id);}
-
-//    void update(Route route){ new UpdateAsyc(routeDao).execute(route);}
-
-    void updateRoute(int id, String title, String time, int rate, String tags){
-        routeDao.updateRoute(id, title, time, rate, tags);}
+    void update(Route route){ new UpdateAsyc(routeDao).execute(route);}
 
     private static class InsertAsyc extends AsyncTask<Route, Void, Void> {
 
@@ -49,69 +46,47 @@ public class RouteRepository {
             return null;
         }
     }
+
     private static class DeleteAsyc extends AsyncTask<Integer, Void, Void> {
 
         private RouteDao dao;
 
-        DeleteAsyc(RouteDao dao) {
+        DeleteAsyc (RouteDao dao) {
             this.dao = dao;
         }
 
         @Override
         protected Void doInBackground(Integer... integers) {
-            dao.deleteItem(integers[0]);
+            dao.deleteTest(integers[0]);
             return null;
         }
     }
-//    private static class UpdateAsyc extends AsyncTask<Route, Void, Void>{
-//        private RouteDao dao;
-//        UpdateAsyc(RouteDao dao) { this.dao = dao;}
-//        @Override
-//        protected Void doInBackground(Route... routes) {
-//            dao.update(routes[0]);
-//            Route temp = routes[0];
-//            dao.updateRoute(temp.getId(), temp.getTitle(), temp.getTime(), temp.getRate(), temp.getTags());
-//            return null;
-//        }
-//    }
 
-    LiveData<List<Location>> getAllLocation(){ return allLocation; }
+    private static class deleteAllWordsAsyncTask extends AsyncTask<Void, Void, Void> {
+        private RouteDao mAsyncTaskDao;
 
-    LiveData<Location> getLocation(int id){ return routeDao.getLocation(id);}
-
-    void insertLocation(Location location){
-        new InsertLocationAsyc(routeDao).execute(location);
-    }
-
-    void deleteLocation(int id) { new DeleteLocationAsyc(routeDao).execute(id);}
-
-    private static class InsertLocationAsyc extends AsyncTask<Location, Void, Void> {
-
-        private RouteDao dao;
-
-        InsertLocationAsyc(RouteDao dao) {
-            this.dao = dao;
+        deleteAllWordsAsyncTask(RouteDao dao) {
+            mAsyncTaskDao = dao;
         }
 
         @Override
-        protected Void doInBackground(Location... locations) {
-            dao.insertLocation(locations[0]);
+        protected Void doInBackground(Void... voids) {
+            mAsyncTaskDao.deleteAll();
             return null;
         }
     }
-    private static class DeleteLocationAsyc extends AsyncTask<Integer, Void, Void> {
 
-        private RouteDao dao;
+    private static class UpdateAsyc extends AsyncTask<Route, Void, Void> {
+        private RouteDao mAsyncTaskDao;
 
-        DeleteLocationAsyc(RouteDao dao) {
-            this.dao = dao;
+        UpdateAsyc(RouteDao dao) {
+            mAsyncTaskDao = dao;
         }
 
         @Override
-        protected Void doInBackground(Integer... integers) {
-            dao.deleteLocation(integers[0]);
+        protected Void doInBackground(final Route... params) {
+            mAsyncTaskDao.update(params[0]);
             return null;
         }
     }
-
 }

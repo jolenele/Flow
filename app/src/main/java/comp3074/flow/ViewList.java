@@ -72,15 +72,6 @@ public class ViewList extends FragmentActivity implements
 //        });
     }
 
-//    @Override
-//    protected void onResume() {
-//        // TODO Auto-generated method stub
-//        super.onResume();
-//
-//        adapter1 = new MyAdapter(MainActivity.this, mProductArrayList);
-//        lvProducts.setAdapter(adapter1);
-//    }
-
     @Override
     public void onListFragmentInteraction(Route route) {
         Toast.makeText(this,"Selected: " + route.getTitle(), Toast.LENGTH_SHORT).show();
