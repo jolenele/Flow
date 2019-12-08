@@ -34,8 +34,8 @@ public class RouteViewModel extends AndroidViewModel {
         repository.insertRoute(route);
     }
     public void deleteRoute(int id) { repository.deleteRoute(id); }
-    public void update(Route route) { repository.updateRoute(route);}
-
+//    public void update(Route route) { repository.updateRoute(route);}
+    public void update(int id, String title, String time, int rate, String tags) { repository.updateRoute(id, title, time, rate, tags);}
     public LiveData<List<Location>> getAllLocations(){
         return allLocations;
     }

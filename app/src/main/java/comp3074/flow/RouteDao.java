@@ -25,8 +25,11 @@ public interface RouteDao {
     @Query("SELECT * FROM routes WHERE id = :id")
     LiveData<Route> getRoute(int id);
 
-    @Update
-    void update(Route route);
+//    @Update(onConflict = OnConflictStrategy.IGNORE)
+//    void update(Route route);
+
+    @Query("UPDATE routes SET title=:title, time=:time, rate=:rate, tags=:tags WHERE id = :id")
+    void updateRoute(int id, String title, String time, int rate, String tags);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertLocation(Location location);

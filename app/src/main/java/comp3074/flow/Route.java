@@ -38,6 +38,15 @@ import androidx.room.PrimaryKey;
         this.tags = tags;
     }
     @Ignore
+     public Route(String start, int rate, String title, String time, String tags) {
+         this.id = id;
+         this.start = start;
+         this.rate = rate;
+         this.title = title;
+         this.time = time;
+         this.tags = tags;
+     }
+    @Ignore
     public Route(int rate, String title, String tags){
         this.rate = rate;
         this.title = title;
@@ -104,6 +113,11 @@ import androidx.room.PrimaryKey;
 
     public void setTags(String tags) {
         this.tags = tags;
+    }
+
+    public String toString(){
+        return "ID: "+getId()+"\nStart: "+getStart()+"\nEnd: "+getEnd()+"\nTitle: "+getTitle()+
+                "\nTime: "+getTime()+"\nRate: "+String.valueOf(getRate())+"\nTags: "+getTags();
     }
  }
 
