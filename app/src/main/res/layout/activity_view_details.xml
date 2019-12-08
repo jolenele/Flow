@@ -133,13 +133,13 @@
 
         <EditText
             android:id="@+id/txtStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="212dp"
+            android:layout_height="44dp"
             android:layout_marginTop="28dp"
             android:ems="10"
             android:hint="Start Point"
             android:importantForAutofill="no"
-            android:inputType="textPersonName"
+            android:inputType="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.537"
             app:layout_constraintStart_toEndOf="@+id/lblStart"
@@ -147,13 +147,13 @@
 
         <EditText
             android:id="@+id/txtEnd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="210dp"
+            android:layout_height="41dp"
             android:layout_marginTop="32dp"
             android:ems="10"
             android:hint="End Point"
             android:importantForAutofill="no"
-            android:inputType="textPersonName"
+            android:inputType="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.549"
             app:layout_constraintStart_toEndOf="@+id/lblEnd"
@@ -161,8 +161,8 @@
 
         <EditText
             android:id="@+id/txtTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="214dp"
+            android:layout_height="45dp"
             android:layout_marginTop="32dp"
             android:ems="10"
             android:hint="Title"
@@ -175,13 +175,12 @@
 
         <EditText
             android:id="@+id/txtTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="217dp"
+            android:layout_height="42dp"
             android:layout_marginTop="32dp"
             android:ems="10"
-            android:hint="Time"
             android:importantForAutofill="no"
-            android:inputType="textPersonName"
+            android:inputType="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.549"
             app:layout_constraintStart_toEndOf="@+id/lblTime"
@@ -189,8 +188,8 @@
 
         <EditText
             android:id="@+id/txtTags"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="212dp"
+            android:layout_height="48dp"
             android:layout_marginTop="32dp"
             android:ems="10"
             android:hint="Tags"
@@ -236,7 +235,7 @@
         android:layout_marginStart="68dp"
         android:layout_marginLeft="68dp"
         android:layout_marginTop="36dp"
-        android:text="@string/back"
+        android:text="@string/save"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 

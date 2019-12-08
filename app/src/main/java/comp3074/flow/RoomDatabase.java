@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.sqlite.db.SupportSQLiteDatabase;
-@Database(entities = {Route.class, Location.class}, version = 1, exportSchema = false)
+@Database(entities = {Route.class}, version = 1, exportSchema = false)
 public abstract class RoomDatabase extends androidx.room.RoomDatabase {
     public abstract RouteDao routeDao();
 
@@ -33,7 +33,6 @@ public abstract class RoomDatabase extends androidx.room.RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             routeDao.getAll();
-            routeDao.getAllLocation();
             return null;
         }
     }

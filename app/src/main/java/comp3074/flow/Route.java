@@ -28,7 +28,7 @@ import androidx.room.PrimaryKey;
      @ColumnInfo(name = "Tags")
      public String tags;
 
-    public Route(String start, String end, int rate, String title, String time, String tags) {
+    public Route(int id, String start, String end, int rate, String title, String time, String tags) {
         this.id = id;
         this.start = start;
         this.end = end;
@@ -37,6 +37,22 @@ import androidx.room.PrimaryKey;
         this.time = time;
         this.tags = tags;
     }
+    @Ignore
+    public Route(String start, String end, int rate, String title, String time, String tags) {
+        this.start = start;
+        this.end = end;
+        this.rate = rate;
+        this.title = title;
+        this.time = time;
+        this.tags = tags;
+    }
+     @Ignore
+     public Route(int id, int rate, String title, String tags) {
+         this.id = id;
+         this.rate = rate;
+         this.title = title;
+         this.tags = tags;
+     }
     @Ignore
      public Route(String start, int rate, String title, String time, String tags) {
          this.id = id;
